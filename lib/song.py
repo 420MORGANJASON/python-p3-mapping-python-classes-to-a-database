@@ -1,3 +1,5 @@
+import sqlite3
+
 from config import CONN, CURSOR
 
 
@@ -27,7 +29,7 @@ class Song:
 
         CURSOR.execute(sql, (self.name, self.album))
 
-        self.id = CURSOR.execute("SELECT last_insert_row id() FROM songs").fetchone()[0]
+        self.id = CURSOR.execute("SELECT last_insert_row id() FROM songs").fetchone([0])
 
     @classmethod
     def create(cls, name, album):
